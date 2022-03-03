@@ -6,7 +6,7 @@ class Header extends React.Component{
     render(){
         return(
             <header id="header" className="App-header">
-                <h1>My React Final</h1>
+                <h1 className="inline" style={{width: "500px"}} id="logo">My React Final</h1>
                 <Nav />
                 <Search />
             </header>
