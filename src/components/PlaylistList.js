@@ -41,7 +41,7 @@ class PlaylistList extends React.Component {
 
 const mapStateToProps = ({ playlists }) => {
   return {
-    playlists: playlists,
+    playlists: playlists.playlists,
   };
 };
 
