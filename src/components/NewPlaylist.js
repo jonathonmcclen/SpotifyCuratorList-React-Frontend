@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createPlaylist } from "../redux/PlaylistStore/Actions";
 
 class NewPlaylist extends React.Component {
   //set initial state for form
@@ -8,8 +9,9 @@ class NewPlaylist extends React.Component {
   //Submit buton functionality
   submit = (e) => {
     e.preventDefault();
-    //this.props.addPlaylist(this.state);
-    this.props.history.push("/playlists");
+    this.props.createPlaylist(this.state);
+    this.setState({});
+    //this.props.history.push("/playlists");
   };
 
   render() {
@@ -19,9 +21,9 @@ class NewPlaylist extends React.Component {
         <form onSubmit={this.submit}>
           Playlist Name:{" "}
           <input
-            onChange={(e) => this.setState({ playlistnName: e.target.value })}
+            onChange={(e) => this.setState({ playlistName: e.target.value })}
             type="text"
-            value={this.state.playlistnName}
+            value={this.state.playlistName}
           />
           <br />
           Playlist Genres:{" "}
@@ -52,7 +54,7 @@ class NewPlaylist extends React.Component {
           <input
             onChange={(e) => this.setState({ curatorName: e.target.value })}
             type="text"
-            value={this.state.nacuratorNameme}
+            value={this.state.curatorName}
           />
           <br />
           Curator Location:{" "}
@@ -146,4 +148,4 @@ class NewPlaylist extends React.Component {
   }
 }
 
-export default NewPlaylist;
+export default connect(null, { createPlaylist })(NewPlaylist);
