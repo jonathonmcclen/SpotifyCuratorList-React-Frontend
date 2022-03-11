@@ -1,4 +1,9 @@
-import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAIL } from "./ActionTypes";
+import {
+  FETCH_REQUEST,
+  FETCH_SUCCESS,
+  FETCH_FAIL,
+  CREATE_SUCCESS,
+} from "./ActionTypes";
 
 const initState = {
   playlists: [],
@@ -6,11 +11,11 @@ const initState = {
 };
 
 function reducer(state = initState, action) {
-  debugger;
   switch (action.type) {
     case FETCH_SUCCESS:
-      debugger;
       return { ...state, playlists: action.payload };
+    case CREATE_SUCCESS:
+      return { ...state, playlists: [...state.playlists, action.payload] };
     default:
       return state;
   }
