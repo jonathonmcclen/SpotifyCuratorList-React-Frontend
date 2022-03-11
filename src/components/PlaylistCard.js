@@ -1,23 +1,18 @@
-const PlaylistCard = () => {
+const PlaylistCard = (props) => {
   return (
     <div className="margin-wraper col-md-4">
       <div className=" show-card card">
         <div className="card-body">
-          <h5 className="card-title">Playlist name</h5>
+          <h5 className="card-title">{props.playlist.name}</h5>
           <p>
             Description:
-            <span>
-              Venue Description...Some quick example text to build on the card
-              title and make up the bulk of the card's content.
-            </span>
+            <span>{props.playlist.description}</span>
           </p>
           <p>
-            <em>1/01/2022</em>
+            <em>by: {props.playlist.curator}</em>
           </p>
-          <p>Capacity: 15/60</p>
-          <a href="/show" className="btn btn-primary">
-            Go somewhere
-          </a>
+          <p>followers : {props.playlist.followers}</p>
+          <p>Songs: {props.playlist.songs}</p>
         </div>
       </div>
     </div>
