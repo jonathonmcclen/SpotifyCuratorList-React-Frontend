@@ -2,11 +2,15 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import playlistReducer from "./PlaylistStore/index.js";
 
-export const rootStore = combineReducers({
-  playlist: playlistReducer,
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+  playlists: playlistReducer,
 });
 
-const middlewareEnhancer = applyMiddleware(thunkMiddleware);
-const composedEnhancers = compose(middlewareEnhancer);
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunkMiddleware))
+);
 
-export default createStore(rootStore, composedEnhancers);
+export default store;
